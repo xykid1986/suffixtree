@@ -27,5 +27,21 @@ public class SuffixTreeTest {
 		Assert.assertEquals(z.getStart(),1);	
 		Assert.assertEquals(z.getEnd(),1);	
 	}
-
+	
+	@Test
+	public void testTraceToNode(){
+		String input = "banana";
+		SuffixTree st = new SuffixTree(input);
+		Assert.assertEquals(st.traceToNode("an").getStart(),1);
+		Assert.assertEquals(st.traceToNode("na").getStart(),2);
+		Assert.assertNull(st.traceToNode("ab"));
+	}
+	@Test
+	public void testFindAllOccurance(){
+		String input = "banana";
+		SuffixTree st = new SuffixTree(input);
+		int[] index = st.findAllOccurance("ana");
+		Assert.assertEquals(index[0],1);
+		Assert.assertEquals(index[1],3);
+	}
 }

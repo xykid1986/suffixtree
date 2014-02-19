@@ -99,5 +99,4 @@ public class StringSerivceTest {
 		Assert.assertEquals(kMismatch("abentbananaend","bend",2)[2],"aend");
 		
 	}
-
 }

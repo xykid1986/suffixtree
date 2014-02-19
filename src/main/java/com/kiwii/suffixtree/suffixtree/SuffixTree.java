@@ -349,6 +349,49 @@ public class SuffixTree {
 		return findNode(0, start, inputs.get(0).length()-1);
 	}
 	
+	/**
+	 * Trance a str on this suffix tree, return the node it ends at. 
+	 * @param str
+	 * @return
+	 */
+	public SuffixTreeNode traceToNode(String str){
+		SuffixTreeNode current = this.root;
+		int pointer = 0;
+		while(pointer<str.length()){
+			SuffixTreeNode next = this.searchEndChild(current, str.charAt(pointer));
+			if(next!=null){
+				current = next;
+				int matchPtr = current.cut;
+				while(matchPtr<=current.end){
+					if(current.stringRepr.charAt(matchPtr++-current.start)!=str.charAt(pointer++)){
+						return null;
+					}
+					if(pointer>=str.length()){
+						return current;
+					}
+				}
+			}else{
+				return null;
+			}
+		}
+		throw new IllegalStateException();
+	}
+	
+	public int[] findAllOccurance(String str){
+		SuffixTreeNode node = traceToNode(str);
+		if(node!=null){
+			List<SuffixTreeNode> indexLeaves = new ArrayList<SuffixTreeNode>();
+			indexLeaves = StringService.findAllLeaves(node);
+			int[] res = new int[indexLeaves.size()];
+			for(int i=0;i<res.length;i++){
+				res[i]=indexLeaves.get(i).start;
+			}
+			Arrays.sort(res);
+			return res;
+		}
+		return new int[0];
+	}
+	
 	public void displayProcessedTree(){
 		if(root == null)
 			return;

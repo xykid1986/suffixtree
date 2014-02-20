@@ -381,6 +381,11 @@ public class SuffixTree {
 		SuffixTreeNode node = traceToNode(str);
 		if(node!=null){
 			List<SuffixTreeNode> indexLeaves = new ArrayList<SuffixTreeNode>();
+			if(node.isLeaf){
+				int[] res = new int[1];
+				res[0] = node.getStart();
+				return res;
+			}
 			indexLeaves = StringService.findAllLeaves(node);
 			int[] res = new int[indexLeaves.size()];
 			for(int i=0;i<res.length;i++){

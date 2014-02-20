@@ -43,5 +43,7 @@ public class SuffixTreeTest {
 		int[] index = st.findAllOccurance("ana");
 		Assert.assertEquals(index[0],1);
 		Assert.assertEquals(index[1],3);
+		index = st.findAllOccurance("b");
+		Assert.assertEquals(index[0],0);
 	}
 }

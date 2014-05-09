@@ -20,12 +20,14 @@ public class StringSerivceTest {
 	    String test4 = "sexiaotoaixti";
 	    String test5 ="deal with host split problxiaotoaixem. Modified StringServices methods";
 	    String test6 = "abcdecba";
+	    String test7 = "aaaacb";
 	    Assert.assertEquals(StringService.longestPalindrome(test1).get(0),"iti");
 	    Assert.assertEquals(StringService.longestPalindrome(test2).get(0),"xiaotoaix");
 	    Assert.assertEquals(StringService.longestPalindrome(test3).get(0),"iaotoai");
 	    Assert.assertEquals(StringService.longestPalindrome(test4).get(0),"xiaotoaix");
 	    Assert.assertEquals(StringService.longestPalindrome(test5).get(0),"xiaotoaix");
 	    Assert.assertEquals(StringService.longestPalindrome(test6).size(), 0);
+	    Assert.assertEquals(StringService.longestPalindrome(test7).get(0), "aaaa");
 	}
 
 	@Test

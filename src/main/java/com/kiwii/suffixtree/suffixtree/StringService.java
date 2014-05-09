@@ -31,7 +31,7 @@ public class StringService {
 			int len = Utils.longestCommonExtention(st, 0, 1, startCount, s.length()-1-i)-1;
 			if(len>=1){
 				if(startCount!=i){//even
-					palindromes.add(s.substring(startCount-len,startCount+1));
+					palindromes.add(s.substring(startCount,startCount+len+1));
 				}else{
 					palindromes.add(s.substring(startCount-len,startCount+len+1));
 				}
@@ -42,9 +42,10 @@ public class StringService {
 		for(String str: palindromes){
 			if(str.length()<maxLen)
 				continue;
-			if(str.length()>maxLen)
+			else if(str.length()>maxLen)
 				maxPalindromes.clear();
 			maxPalindromes.add(str);
+			maxLen = str.length();
 		}
 		return new ArrayList<String>(maxPalindromes);
 	}
